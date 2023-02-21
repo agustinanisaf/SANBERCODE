@@ -3,8 +3,6 @@ import time
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from webdriver_manager.chrome import ChromeDriverManager
-# from selenium.webdriver.support import expected_conditions as EC
-# from selenium.webdriver.support.wait import WebDriverWait
 
 class TestRegister(unittest.TestCase):
     def setUp(self): 
@@ -25,7 +23,7 @@ class TestRegister(unittest.TestCase):
         # validasi
         response_data = driver.find_element(By.ID,"swal2-title").text
         response_message = driver.find_element(By.ID,"swal2-content").text
-        driver.find_element(By.XPATH,"/html/body/div[2]/div/div[3]/button[1]").click()
+        driver.find_element(By.XPATH,"/html/body/div[2]/div/div[3]/button[1]").click() #klik tombol OK untuk menutup popup
         time.sleep(1)
 
         self.assertIn('Welcome', response_data)
@@ -38,15 +36,15 @@ class TestRegister(unittest.TestCase):
         time.sleep(1)
         driver.find_element(By.XPATH,"/html/body/div/div[2]/form/input[1]").send_keys("agustin@gmail.com") # isi email
         time.sleep(1)
-        driver.find_element(By.CSS_SELECTOR,"input#password").send_keys("") # isi password
+        driver.find_element(By.CSS_SELECTOR,"input#password").send_keys("") # kosongi password
         time.sleep(1)
         driver.find_element(By.ID,"signin_login").click() # klik tombol sign in
-        time.sleep(1)
+        time.sleep(2)
 
         # validasi
         response_data = driver.find_element(By.ID,"swal2-title").text
         response_message = driver.find_element(By.ID,"swal2-content").text
-        driver.find_element(By.XPATH,"/html/body/div[2]/div/div[3]/button[1]").click()
+        driver.find_element(By.XPATH,"/html/body/div[2]/div/div[3]/button[1]").click() #klik tombol OK untuk menutup popup
         time.sleep(1)
 
         self.assertIn('not found', response_data)
@@ -57,17 +55,17 @@ class TestRegister(unittest.TestCase):
         driver = self.browser #buka web browser
         driver.get("http://barru.pythonanywhere.com/daftar") # buka situs
         time.sleep(1)
-        driver.find_element(By.XPATH,"/html/body/div/div[2]/form/input[1]").send_keys("") # isi email
+        driver.find_element(By.XPATH,"/html/body/div/div[2]/form/input[1]").send_keys("") # kosongi email
         time.sleep(1)
         driver.find_element(By.CSS_SELECTOR,"input#password").send_keys("passwordagustin") # isi password
         time.sleep(1)
         driver.find_element(By.ID,"signin_login").click() # klik tombol sign in
-        time.sleep(1)
+        time.sleep(2)
 
         # validasi
         response_data = driver.find_element(By.ID,"swal2-title").text
         response_message = driver.find_element(By.ID,"swal2-content").text
-        driver.find_element(By.XPATH,"/html/body/div[2]/div/div[3]/button[1]").click()
+        driver.find_element(By.XPATH,"/html/body/div[2]/div/div[3]/button[1]").click() #klik tombol OK untuk menutup popup
         time.sleep(1)
 
         self.assertIn('not found', response_data)
@@ -78,17 +76,17 @@ class TestRegister(unittest.TestCase):
         driver = self.browser #buka web browser
         driver.get("http://barru.pythonanywhere.com/daftar") # buka situs
         time.sleep(1)
-        driver.find_element(By.XPATH,"/html/body/div/div[2]/form/input[1]").send_keys("") # isi email
+        driver.find_element(By.XPATH,"/html/body/div/div[2]/form/input[1]").send_keys("") # kosongi email
         time.sleep(1)
-        driver.find_element(By.CSS_SELECTOR,"input#password").send_keys("") # isi password
+        driver.find_element(By.CSS_SELECTOR,"input#password").send_keys("") # kosongi password
         time.sleep(1)
         driver.find_element(By.ID,"signin_login").click() # klik tombol sign in
-        time.sleep(1)
+        time.sleep(2)
 
         # validasi
         response_data = driver.find_element(By.ID,"swal2-title").text
         response_message = driver.find_element(By.ID,"swal2-content").text
-        driver.find_element(By.XPATH,"/html/body/div[2]/div/div[3]/button[1]").click()
+        driver.find_element(By.XPATH,"/html/body/div[2]/div/div[3]/button[1]").click() #klik tombol OK untuk menutup popup
         time.sleep(1)
 
         self.assertIn('not found', response_data)
