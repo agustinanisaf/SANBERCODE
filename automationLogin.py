@@ -91,6 +91,48 @@ class TestRegister(unittest.TestCase):
 
         self.assertIn('not found', response_data)
         self.assertEqual(response_message, 'Email atau Password Anda Salah')
+    
+    def test_d_failed_login_with_invalid_email(self): 
+        # steps
+        driver = self.browser #buka web browser
+        driver.get("http://barru.pythonanywhere.com/daftar") # buka situs
+        time.sleep(1)
+        driver.find_element(By.ID,"email").send_keys("agus@gmail.com") # isi invalid email
+        time.sleep(1)
+        driver.find_element(By.CSS_SELECTOR,"input#password").send_keys("passwordagustin") # isi valid password
+        time.sleep(1)
+        driver.find_element(By.ID,"signin_login").click() # klik tombol sign in
+        time.sleep(1)
+
+        # validasi
+        response_data = driver.find_element(By.ID,"swal2-title").text
+        response_message = driver.find_element(By.ID,"swal2-content").text
+        driver.find_element(By.XPATH,"/html/body/div[2]/div/div[3]/button[1]").click() #klik tombol OK untuk menutup popup
+        time.sleep(1)
+
+        self.assertIn('not found', response_data)
+        self.assertEqual(response_message, 'Email atau Password Anda Salah')
+    
+    def test_e_failed_login_with_invalid_password(self): 
+        # steps
+        driver = self.browser #buka web browser
+        driver.get("http://barru.pythonanywhere.com/daftar") # buka situs
+        time.sleep(1)
+        driver.find_element(By.XPATH,"/html/body/div/div[2]/form/input[1]").send_keys("agustin@gmail.com") # isi valid email
+        time.sleep(1)
+        driver.find_element(By.ID,"password").send_keys("password") # isi invalid password
+        time.sleep(1)
+        driver.find_element(By.ID,"signin_login").click() # klik tombol sign in
+        time.sleep(2)
+
+        # validasi
+        response_data = driver.find_element(By.ID,"swal2-title").text
+        response_message = driver.find_element(By.ID,"swal2-content").text
+        driver.find_element(By.XPATH,"/html/body/div[2]/div/div[3]/button[1]").click() #klik tombol OK untuk menutup popup
+        time.sleep(1)
+
+        self.assertIn('not found', response_data)
+        self.assertEqual(response_message, 'Email atau Password Anda Salah')
 
     def tearDown(self): 
         self.browser.close()
